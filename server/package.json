@@ -1,5 +1,5 @@
 {
-  "name": "redux-voting",
+  "name": "redux-voting-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
