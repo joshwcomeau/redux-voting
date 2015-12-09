@@ -6,7 +6,7 @@ import reducer from '../src/reducer';
 describe('reducer', () => {
   it('handles SET_ENTRIES', () => {
     const initialState = Map();
-    const action = {type: 'SET_ENTRIES', entries: List.of('Trainspotting')};
+    const action = {type: 'SET_ENTRIES', entries: ['Trainspotting']};
     const nextState = reducer(initialState, action);
 
     expect(nextState).to.equal(fromJS({
@@ -45,6 +45,14 @@ describe('reducer', () => {
         tally: {Trainspotting: 1}
       },
       entries: []
+    }));
+  });
+
+  it('has an initial state', () => {
+    const action = {type: 'SET_ENTRIES', entries: ['Trainspotting']};
+    const nextState = reducer(undefined, action);
+    expect(nextState).to.equal(fromJS({
+      entries: ['Trainspotting']
     }));
   });
 });
