@@ -13,7 +13,7 @@ module.exports = {
       loader: 'react-hot!babel'
     }, {
       test: /\.css$/,
-      loader: 'style!css!autoprefixer?browsers=last 2 versions'
+      loader: 'style-loader!css-loader!autoprefixer?browsers=last 2 versions'
     }]
   },
   resolve: {
