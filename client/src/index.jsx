@@ -13,11 +13,13 @@ import {ResultsContainer} from './components/Results';
 
 require('./style.css');
 
-const createStoreWithMiddleware = applyMiddleware(remoteActionMiddleware)(createStore);
-const store = createStoreWithMiddleware(reducer);
 
 const socket = io(`${location.protocol}//${location.hostname}:8090`);
 socket.on('state', state => store.dispatch( actionCreators.setState(state) ));
+
+const createStoreWithMiddleware = applyMiddleware(remoteActionMiddleware(socket))(createStore);
+const store = createStoreWithMiddleware(reducer);
+
 
 const routes = (
   <Route component={App}>

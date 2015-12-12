@@ -15,6 +15,10 @@ export default function startServer(store) {
     socket.emit('state', store.getState().toJS() );
 
     // Allow the clients to update the state (eg. by voting)
+    socket.on('action', (action) => {
+      console.log("Request!", action)
+    });
+
     socket.on('action', store.dispatch.bind(store));
   });
 }
